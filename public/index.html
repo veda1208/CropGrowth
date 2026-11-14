@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1f6b45">
+  <title>CropGrowth | Fertilizer Advisor</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <section class="auth-screen" id="authScreen">
+    <div class="auth-brand"><span class="brand-mark">✳</span><span><b>CropGrowth</b><small>SMART FARMING ASSISTANT</small></span></div>
+    <div class="auth-layout">
+      <div class="auth-intro">
+        <span class="pill light-pill">🌱 SIMPLE TOOLS FOR BETTER FARMING</span>
+        <h1>Make informed decisions for your farm.</h1>
+        <p>Sign in to manage your farm details and receive a clear fertilizer recommendation based on your crop and soil information.</p>
+        <div class="auth-benefits"><span>✓ Easy farm and soil entry</span><span>✓ Clear fertilizer estimates per hectare</span><span>✓ Saved recommendation history</span></div>
+        <div class="auth-field-art">🌾</div>
+      </div>
+      <div class="auth-card">
+        <div class="auth-role-switch">
+          <button class="auth-role active" data-auth-role="user">Farmer / User</button>
+          <button class="auth-role" data-auth-role="admin">Admin</button>
+        </div>
+        <div class="auth-tabs">
+          <button class="auth-tab active" data-auth-mode="login">Login</button>
+          <button class="auth-tab" data-auth-mode="register">Create account</button>
+        </div>
+        <div class="auth-heading"><h2 id="authHeading">Welcome back</h2><p id="authDescription">Login to continue to your farmer dashboard.</p></div>
+        <form id="authForm">
+          <label id="authNameWrap" class="auth-field hidden">Full name<input id="authName" autocomplete="name" placeholder="Enter your name"></label>
+          <label id="authPhoneWrap" class="auth-field hidden">Mobile number<input id="authPhone" inputmode="tel" placeholder="Enter mobile number"></label>
+          <label class="auth-field">Email address<input id="authEmail" type="email" autocomplete="username" placeholder="name@example.com" required></label>
+          <label class="auth-field">Password<input id="authPassword" type="password" autocomplete="current-password" minlength="6" placeholder="Enter password" required></label>
+          <label id="authConfirmWrap" class="auth-field hidden">Confirm password<input id="authConfirm" type="password" minlength="6" placeholder="Re-enter password"></label>
+          <button class="btn btn-primary auth-submit" type="submit" id="authSubmit">Login as Farmer</button>
+        </form>
+        <p class="auth-note" id="authNote">New here? Select Create account to register.</p>
+        <p class="auth-demo" id="adminDemoNote">Demo admin: admin@cropgrowth.demo / Admin123</p>
+        <div id="authMessage" class="auth-message" role="status"></div>
+      </div>
+    </div>
+    <p class="auth-foot">CropGrowth • Farmer-friendly fertilizer guidance</p>
+  </section>
+
+  <div class="app-shell" id="appShell" style="display:none">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" aria-label="CropGrowth home">
+        <span class="brand-mark">✳</span><span><b>CropGrowth</b><small>SMART FARMING ASSISTANT</small></span>
+      </a>
+      <div class="side-label">MENU</div>
+      <button class="nav-item active" data-page="dashboard"><span>⌂</span> Dashboard</button>
+      <button class="nav-item" data-page="new"><span>＋</span> New recommendation</button>
+      <button class="nav-item" data-page="history"><span>◷</span> My history</button>
+      <button class="nav-item" data-page="admin"><span>▦</span> Admin control center</button>
+      <div class="sidebar-tip">
+        <div class="tip-icon">☀</div>
+        <b>Good farming starts with good information.</b>
+        <p>Use your latest soil test report for more useful suggestions.</p>
+      </div>
+      <div class="side-footer">CropGrowth • Farmer support</div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenu" aria-label="Open menu">☰</button>
+        <div><div class="eyebrow" id="pageEyebrow">FARMER WORKSPACE</div><h1 id="pageTitle">Your farm dashboard</h1></div>
+        <div class="top-actions"><span class="status-dot"></span><span class="online-label" id="signedInLabel">Ready to help</span><div class="avatar" id="userAvatar">F</div><button class="logout-btn" id="logoutBtn">Log out</button></div>
+      </header>
+
+      <section class="page active" id="page-dashboard">
+        <div class="welcome-card">
+          <div><span class="pill light-pill">🌱 YOUR FARM, YOUR PLAN</span><h2>Grow smarter, one step at a time.</h2>
+            <p>Get a fertilizer plan based on your crop, soil condition, farm area and growth stage.</p>
+            <button class="btn btn-white" data-go="new">Create recommendation <span>→</span></button>
+          </div>
+          <div class="welcome-art" aria-hidden="true"><div class="sun"></div><div class="hill hill-back"></div><div class="hill hill-front"></div><div class="plant">🌾</div></div>
+        </div>
+        <div class="section-heading"><div><span class="eyebrow">QUICK OVERVIEW</span><h2>Your activity</h2></div></div>
+        <div class="stats-grid">
+          <article class="stat-card"><span class="stat-icon green">▤</span><div class="stat-number" id="statTotal">0</div><p>Recommendations created</p></article>
+          <article class="stat-card"><span class="stat-icon amber">◷</span><div class="stat-number" id="statRecent">—</div><p>Most recent recommendation</p></article>
+          <article class="stat-card"><span class="stat-icon blue">♧</span><div class="stat-number">5</div><p>Supported sample crops</p></article>
+        </div>
+        <div class="content-grid">
+          <article class="panel"><div class="panel-head"><div><span class="eyebrow">GET STARTED</span><h3>How it works</h3></div><span class="soft-icon">✓</span></div>
+            <div class="steps-list">
+              <div class="mini-step"><span>1</span><div><b>Tell us about your farm</b><p>Select your crop, location and field size.</p></div></div>
+              <div class="mini-step"><span>2</span><div><b>Add soil details</b><p>Enter pH and N-P-K levels, or choose low, medium or high.</p></div></div>
+              <div class="mini-step"><span>3</span><div><b>Get your fertilizer plan</b><p>Review quantities, timing and precautions.</p></div></div>
+            </div>
+          </article>
+          <article class="panel recent-panel"><div class="panel-head"><div><span class="eyebrow">YOUR RECORDS</span><h3>Recent recommendations</h3></div><button class="text-btn" data-go="history">View all →</button></div><div id="recentList" class="empty-state">No recommendations yet. Create your first farm plan.</div></article>
+        </div>
+        <p class="notice">ⓘ This is a demonstration decision-support tool. Confirm fertilizer choice and dosage with a local agricultural officer or soil-testing laboratory before applying.</p>
+      </section>
+
+      <section class="page" id="page-new">
+        <div class="intro-row"><div><span class="eyebrow">PERSONALISED FARM PLAN</span><h2>Farm & soil information</h2><p>Complete these simple steps. Fields marked * are required.</p></div><div class="progress-box"><b id="stepLabel">Step 1 of 3</b><div class="progress"><i id="progressBar"></i></div></div></div>
+        <div class="wizard">
+          <div class="wizard-tabs"><button class="wizard-tab active" data-step="1"><span>1</span> Farm details</button><button class="wizard-tab" data-step="2"><span>2</span> Soil details</button><button class="wizard-tab" data-step="3"><span>3</span> Review</button></div>
+          <form id="recommendationForm">
+            <div class="form-step active" data-form-step="1">
+              <div class="form-title"><span class="form-symbol">🌿</span><div><h3>First, tell us about your field</h3><p>We use this information to calculate the quantity for your area.</p></div></div>
+              <div class="form-grid">
+                <label>Farmer name <span class="optional">(optional)</span><input id="farmerName" placeholder="Enter your name"></label>
+                <label>Village / Location *<input id="location" required placeholder="e.g. Hanamkonda"></label>
+                <label>Crop *<select id="crop" required><option value="">Choose your crop</option><option value="rice">Rice / Paddy</option><option value="maize">Maize</option><option value="cotton">Cotton</option><option value="chilli">Chilli</option><option value="tomato">Tomato</option></select></label>
+                <label>Growth stage *<select id="growthStage" required><option value="">Choose growth stage</option><option value="sowing">Sowing / Planting</option><option value="vegetative">Vegetative growth</option><option value="flowering">Flowering</option><option value="fruiting">Fruiting / Grain filling</option></select></label>
+                <label>Farm area *<input id="area" type="number" min="0.01" step="any" placeholder="e.g. 2" required></label>
+                <label>Area unit *<select id="areaUnit"><option value="acre">Acres</option><option value="hectare">Hectares</option></select></label>
+              </div>
+              <div class="form-actions"><span></span><button type="button" class="btn btn-primary" data-next="2">Continue to soil details →</button></div>
+            </div>
+
+            <div class="form-step" data-form-step="2">
+              <div class="form-title"><span class="form-symbol">🧪</span><div><h3>What is your soil condition?</h3><p>Use values from your soil test report if available. Otherwise select an approximate level.</p></div></div>
+              <div class="info-banner">💡 <div><b>What do N, P and K mean?</b><br>N = Nitrogen, P = Phosphorus, K = Potassium. These nutrients help plants grow.</div></div>
+              <div class="form-grid">
+                <label>Soil pH <span class="optional"> (0–14)</span><input id="ph" type="number" min="0" max="14" step="0.1" placeholder="e.g. 6.5"><small>Below 7 is acidic; above 7 is alkaline.</small></label>
+                <label>Nitrogen (N) level<select id="nitrogen"><option value="medium">Medium (default)</option><option value="low">Low</option><option value="high">High</option></select><small>Choose the level from your soil report.</small></label>
+                <label>Phosphorus (P) level<select id="phosphorus"><option value="medium">Medium (default)</option><option value="low">Low</option><option value="high">High</option></select></label>
+                <label>Potassium (K) level<select id="potassium"><option value="medium">Medium (default)</option><option value="low">Low</option><option value="high">High</option></select></label>
+              </div>
+              <div class="field-note">If you do not have a soil test, keep the default values and treat the result as a general example only.</div>
+              <div class="form-actions"><button type="button" class="btn btn-outline" data-prev="1">← Back</button><button type="button" class="btn btn-primary" data-next="3">Review details →</button></div>
+            </div>
+
+            <div class="form-step" data-form-step="3">
+              <div class="form-title"><span class="form-symbol">✓</span><div><h3>Check your farm details</h3><p>Make sure the information is correct before generating your plan.</p></div></div>
+              <div class="review-card" id="reviewDetails"></div>
+              <div class="field-note">The recommendation is generated from the sample rule set included in this frontend. It is not a laboratory diagnosis.</div>
+              <div class="form-actions"><button type="button" class="btn btn-outline" data-prev="2">← Edit soil details</button><button type="submit" class="btn btn-primary">Generate my recommendation ✨</button></div>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section class="page" id="page-result">
+        <div class="result-top"><div><span class="eyebrow">YOUR FARM PLAN</span><h2>Fertilizer recommendation</h2><p id="resultSub">Based on the details you provided.</p></div><div class="result-actions"><button class="btn btn-outline" id="printBtn">⎙ Print / Save PDF</button><button class="btn btn-primary" id="newPlanBtn">＋ New plan</button></div></div>
+        <div id="resultContent"></div>
+        <div class="feedback-panel"><div><h3>Was this recommendation useful?</h3><p>Your feedback helps improve the guidance.</p></div><div class="feedback-controls"><button data-rating="Helpful">👍 Helpful</button><button data-rating="Not helpful">👎 Not helpful</button></div></div>
+      </section>
+
+      <section class="page" id="page-history">
+        <div class="section-heading"><div><span class="eyebrow">SAVED FARM PLANS</span><h2>Recommendation history</h2><p>Plans created on this device are saved in this browser.</p></div><button class="btn btn-primary" data-go="new">＋ New recommendation</button></div>
+        <div class="panel"><div id="historyList" class="history-list"></div></div>
+      </section>
+
+      <section class="page" id="page-admin">
+        <div class="section-heading"><div><span class="eyebrow">SYSTEM ADMINISTRATION</span><h2>Admin control center</h2><p>Monitor farmer activity, review recommendation outcomes and manage user access.</p></div><span class="admin-badge">ADMINISTRATOR</span></div>
+        <div class="stats-grid admin-stats">
+          <article class="stat-card"><span class="stat-icon green">♙</span><div class="stat-number" id="adminUserCount">0</div><p>Registered farmers</p></article>
+          <article class="stat-card"><span class="stat-icon blue">▤</span><div class="stat-number" id="adminRecordCount">0</div><p>Total recommendations</p></article>
+          <article class="stat-card"><span class="stat-icon amber">◷</span><div class="stat-number" id="adminTodayCount">0</div><p>Recommendations today</p></article>
+        </div>
+        <div class="panel admin-panel"><div class="panel-head"><div><span class="eyebrow">USER MANAGEMENT</span><h3>Farmer accounts</h3></div><input id="adminUserSearch" class="admin-search" placeholder="Search name, email or mobile" aria-label="Search users"></div><div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Farmer</th><th>Contact</th><th>Joined</th><th>Plans</th><th>Account</th><th>Action</th></tr></thead><tbody id="adminUsersTable"></tbody></table></div></div>
+        <div class="panel admin-panel"><div class="panel-head"><div><span class="eyebrow">FARMER ACTIVITY</span><h3>Recommendation results</h3><p class="muted-small">Review each submitted farm profile and open its full fertilizer result.</p></div><select id="adminCropFilter" class="admin-filter"><option value="all">All crops</option><option value="rice">Rice / Paddy</option><option value="maize">Maize</option><option value="cotton">Cotton</option><option value="chilli">Chilli</option><option value="tomato">Tomato</option></select></div><div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Farmer / Email</th><th>Crop & location</th><th>Area</th><th>Date</th><th>Feedback</th><th>Result</th></tr></thead><tbody id="adminRecordsTable"></tbody></table></div></div>
+        <div class="panel admin-panel"><div class="panel-head"><div><span class="eyebrow">KNOWLEDGE BASE</span><h3>Crop guidance settings</h3><p class="muted-small">Update the demonstration notes used in farmer recommendations.</p></div></div><div class="admin-layout"><div><div id="cropAdminList"></div><form id="addCropForm" class="admin-form" style="margin-top:14px;padding:14px;border:1px dashed var(--line);border-radius:10px"><h4>Add crop type</h4><label>Crop key (English, e.g. groundnut)<input id="newCropKey" pattern="[a-zA-Z0-9_-]+" required placeholder="groundnut"></label><label>Crop display name<input id="newCropName" required placeholder="Groundnut"></label><label>Emoji<input id="newCropEmoji" maxlength="8" value="🌱"></label><label>N-P-K guidance<input id="newCropNpk" required></label><label>Crop notes<textarea id="newCropNotes" rows="2" required></textarea></label><button class="btn btn-primary" type="submit">＋ Add crop profile</button></form></div><form id="cropEditForm" class="admin-form"><label>Crop name<input id="editCropName" disabled></label><label>Typical N-P-K note<input id="editNpk"></label><label>General guidance<textarea id="editNotes" rows="3"></textarea></label><h4>Fertilizer rules (base rate per acre)</h4><div id="fertilizerRuleEditor"></div><button class="small-btn" id="addFertilizerRule" type="button">＋ Add fertilizer rule</button><button class="btn btn-primary" type="submit">Save crop profile & fertilizer rules</button></form></div></div>
+        <p class="notice">ⓘ This prototype stores accounts and results in this browser's localStorage. Admin management is suitable for demonstration only; a live service needs server-side roles, database access controls and audit logs.</p>
+      </section>
+      <footer class="main-footer">CropGrowth <span>•</span> Fertilizer guidance made simpler <span>•</span> Demo version</footer>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>
